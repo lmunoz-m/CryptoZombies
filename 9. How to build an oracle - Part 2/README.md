@@ -1,3 +1,18 @@
+## Prepare the folder & files
+Initialize your new project by running the ``` npm init -y ``` command.
+Next, let's install the following dependencies: truffle, openzeppelin-solidity, loom-js, loom-truffle-provider, bn.js, and axios.
+``` npm i truffle openzeppelin-solidity loom-js loom-truffle-provider bn.js axios ```
+
+You'll be using Truffle to compile and deploy your smart contracts to Loom Testnet so we've gone ahead and created two bare-bones Truffle projects:
+
+The oracle will live in the oracle directory:
+``` mkdir oracle && cd oracle && npx truffle init && cd .. ```
+
+The caller contract will live in the caller directory:
+``` mkdir caller && cd caller && npx truffle init && cd .. ```
+
+### Chapter 9
+
 This lesson picks up where we left off last time, and we're going to look at how to:
 
 - Implement the JavaScript component of the oracle.
@@ -240,9 +255,9 @@ const privateKeyString = CryptoUtils.Uint8ArrayToB64(privateKey)
 let path = process.argv[2]
 fs.writeFileSync(path, privateKeyString)
 ```
-You can now generate the private key for the oracle by entering the ```js node scripts/gen-key.js oracle/oracle_private_key command. ```
+You can now generate the private key for the oracle by entering the ``` node scripts/gen-key.js oracle/oracle_private_key``` command. 
 
-Similarly, to generate the private key for the caller contract, run ```js node scripts/gen-key.js caller/caller_private_key. ```
+Similarly, to generate the private key for the caller contract, run ``` node scripts/gen-key.js caller/caller_private_key. ```
 
 ### Configuring Truffle
 Next, you must let Truffle know how to deploy on Extdev Testnet. Because the oracle and the caller contract use different private keys, the easiest way is to create separate configurations.
@@ -314,9 +329,9 @@ Well, I'm not a big fan of typing this every time I want to deploy the contracts
   },
 ```
 
-Now you can deploy the smart contracts with one command! Type ```js npm run deploy:all ``` in the box to the right, and then press Enter.
+Now you can deploy the smart contracts with one command! Type ``` npm run deploy:all ``` in the box to the right, and then press Enter.
 
-We went ahead and started the oracle by running ```js node EthPriceOracle.js. ```
+We went ahead and started the oracle by running ``` node EthPriceOracle.js. ```
 
-Fire up a terminal window, and start the client by entering the following command: ```js node Client.js. ```
+Fire up a terminal window, and start the client by entering the following command: ``` node Client.js. ```
 

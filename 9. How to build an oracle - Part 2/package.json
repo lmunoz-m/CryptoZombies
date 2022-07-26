@@ -1,0 +1,21 @@
+{
+  "name": "9.-how-to-build-an-oracle---part-2",
+  "version": "1.0.0",
+  "description": "This lesson picks up where we left off last time, and we're going to look at how to:",
+  "main": "Client.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy:oracle": "cd oracle && npx truffle migrate --network extdev --reset -all && cd ..",
+    "deploy:caller": "cd caller && npx truffle migrate --network extdev --reset -all && cd ..",
+    "deploy:all": "npm run deploy:oracle && npm run deploy:caller"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "bn.js": "^5.2.1",
+    "loom-truffle-provider": "^0.1.1",
+    "openzeppelin-solidity": "^4.6.0"
+  }
+}
