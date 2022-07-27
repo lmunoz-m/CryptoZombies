@@ -27,6 +27,10 @@ Now yo can deploy the Smart Contracts (you must configure first de truffle-confi
 
   ```npx truffle deploy --network extdev```
 
+To see how it works, run the Oracle and then in a new terminal windows the Client
+``` node EthPriceOracle.js ```
+``` node Client.js ```
+
 ### Chapter 9
 
 This lesson picks up where we left off last time, and we're going to look at how to:
