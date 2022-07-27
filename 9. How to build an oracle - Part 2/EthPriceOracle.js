@@ -46,6 +46,17 @@ async function processQueue (oracleContract, ownerAddress) {
   }
 }
 
+async function retrieveLatestEthPrice () {
+  const resp = await axios({
+    url: 'https://api.binance.com/api/v3/ticker/price',
+    params: {
+      symbol: 'ETHUSDT'
+    },
+    method: 'get'
+  })
+  return resp.data.price
+}
+
 async function processRequest (oracleContract, ownerAddress, id, callerAddress) {
   let retries = 0
   while (retries < MAX_RETRIES) {

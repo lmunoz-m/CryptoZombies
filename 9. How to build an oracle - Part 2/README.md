@@ -11,6 +11,22 @@ The oracle will live in the oracle directory:
 The caller contract will live in the caller directory:
 ``` mkdir caller && cd caller && npx truffle init && cd .. ```
 
+Introduce your Smart Contracts in the folder 'contracts' and generate the private keys with the script (please be in the correct folder)
+  - For the oracle
+
+  ```node scripts/gen-key.js oracle oracle_private_key```
+  - For the caller
+
+  ```node scripts/gen-key.js caller/caller_private_key```
+
+Now yo can deploy the Smart Contracts (you must configure first de truffle-config.js, see below)
+  - For the oracle
+
+  ```npx truffle deploy --network extdev```
+  - For the caller
+
+  ```npx truffle deploy --network extdev```
+
 ### Chapter 9
 
 This lesson picks up where we left off last time, and we're going to look at how to:
@@ -285,7 +301,7 @@ module.exports = {
   },
   compilers: {
     solc: {
-      version: '0.5.0'
+      version: '0.8.0'
     }
   }
 }
@@ -313,18 +329,18 @@ module.exports = function (deployer) {
 
 At this point, you're ready to deploy your contracts. But that'll require you to enter the following commands:
 ```js
-cd oracle && npx truffle migrate --network extdev --reset -all && cd ..
+cd oracle && npx truffle deploy --network extdev --reset -all && cd ..
 ```
 followed by:
 ```js
-cd caller && npx truffle migrate --network extdev --reset -all && cd ..
+cd caller && npx truffle deploy --network extdev --reset -all && cd ..
 ```
 Well, I'm not a big fan of typing this every time I want to deploy the contracts. Let's make it easier by modifying the scripts section of the package.json file to this:
 ```js
 "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy:oracle": "cd oracle && npx truffle migrate --network extdev --reset -all && cd ..",
-    "deploy:caller": "cd caller && npx truffle migrate --network extdev --reset -all && cd ..",
+    "deploy:oracle": "cd oracle && npx truffle deploy --network extdev --reset -all && cd ..",
+    "deploy:caller": "cd caller && npx truffle deploy --network extdev --reset -all && cd ..",
     "deploy:all": "npm run deploy:oracle && npm run deploy:caller"
   },
 ```
